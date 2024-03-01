@@ -191,7 +191,7 @@
         options.componentRestrictions = {country: this.options.country};
       }
 
-      this.autocomplete = new google.maps.places.Autocomplete(
+      this.autocomplet = new google.maps.places.Autocomplete(
         this.input, options
       );
 
@@ -200,12 +200,12 @@
       // Bind autocomplete to map bounds but only if there is a map
       // and `options.bindToMap` is set to true.
       if (this.map && this.options.bounds === true){
-        this.autocomplete.bindTo('bounds', this.map);
+        this.autocomplet.bindTo('bounds', this.map);
       }
 
       // Watch `place_changed` events on the autocomplete input field.
       google.maps.event.addListener(
-        this.autocomplete,
+        this.autocomplet,
         'place_changed',
         $.proxy(this.placeChanged, this)
       );
@@ -317,8 +317,8 @@
         google.maps.event.clearInstanceListeners(this.marker);
       }
 
-      this.autocomplete.unbindAll();
-      google.maps.event.clearInstanceListeners(this.autocomplete);
+      this.autocomplet.unbindAll();
+      google.maps.event.clearInstanceListeners(this.autocomplet);
       google.maps.event.clearInstanceListeners(this.input);
       this.$input.removeData();
       this.$input.off(this._name);
@@ -540,7 +540,7 @@
     // Update the plugin after the user has selected an autocomplete entry.
     // If the place has no geometry it passes it to the geocoder.
     placeChanged: function(){
-      var place = this.autocomplete.getPlace();
+      var place = this.autocomplet.getPlace();
       this.selected = true;
 
       if (!place.geometry){

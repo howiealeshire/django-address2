@@ -36,7 +36,7 @@ class AddressWidget(forms.TextInput):
 
         js = [
             "https://maps.googleapis.com/maps/api/js?libraries=places&key=%s" % settings.GOOGLE_API_KEY,
-            "js/jquery.geocomplete.min.js",
+            "js/jquery.geocomplete.js",
             "address/js/address.js",
         ]
 
